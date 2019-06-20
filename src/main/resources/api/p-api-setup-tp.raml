@@ -1,0 +1,22 @@
+#%RAML 1.0
+title: p-api-setup-TP
+version: 1.0
+description: This API orchestrates the system APIs that are required to transfer a mortgage to a new Tussenpersoon.
+
+types:
+  tpchange: !include DataTypes/TPChangeDataType.raml
+  customMessage: !include DataTypes/CustomMessageDataType.raml
+
+/tpchanges:
+  /{id}:
+    patch:
+      description: updates the Tussenpersoon id for the mortgage with mortgage_id
+      body:
+        application/json:
+          type: tpchange
+      responses:
+        200:
+          body:
+            application/json:
+              type: customMessage
+              
